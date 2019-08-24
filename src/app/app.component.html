@@ -1,0 +1,151 @@
+
+<router-outlet></router-outlet>
+
+<div class="container my-5">
+    <h2 class="text-center">Inbuild Pipes</h2>
+
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4 mt-5">
+        <select class="form-control" #make (change)="choice(make.value)">
+            <option></option>
+            <option value="1">Alphabet Case</option>
+            <option value='2'>Percentage</option>
+            <option value='3'>Currency</option>
+            <option value='4'>Slice</option>
+            <option value='5'>Date</option>
+            <option value='6'>Digit</option>
+        </select>
+    </div>
+    <div class="col-lg-6">
+            <div *ngIf = "user == 1">
+                    <div class="container my-4">
+                   <div class="box-part text-center">
+                        <i class='fas fa-sort-alpha-down' style='font-size:48px;color:rgb(13, 126, 255)'></i>
+                        <div class="title text-secondary">
+                            <h3>lowercase</h3>
+                        </div>
+                        <div class="text">
+                            <p>{{ alphaCase | lowercase }}</p>
+                        </div>
+                        <div class="title text-secondary">
+                            <h3>UPPERCASE</h3>
+                        </div>
+                        <div class="text">
+                            <p>{{ alphaCase | uppercase }}</p>
+                        </div>
+                        <div class="title text-secondary">
+                            <h3>Titlecase</h3>
+                        </div>
+                        <div class="text">
+                            <p>{{ alphaCase | titlecase }}</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
+                  <div *ngIf = 'user == 2'>
+                      <div class="container">
+                            <div class="box-part text-center">
+                                    <i class='fas fa-percent' style='font-size:48px;color:rgb(13, 126, 255)'></i>
+                                    <div class="title">
+                                        <h3>Percentage</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ percentVar | percent }}</p>
+                                    </div>
+                                 </div>
+                        </div>
+                  </div>
+                
+                  <div *ngIf = 'user == 3'>
+                      <div class="container">
+                            <div class="box-part text-center">
+                                    <i class='fas fa-dollar-sign' style='font-size:48px;color:rgb(13, 126, 255)'></i>
+                                    <div class="title">
+                                        <h3>Currency</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ money | currency }}</p>
+                                    </div>
+                                    <hr>
+                                    <div class="title">
+                                            <h3>Parameterized pipes - Currency</h3>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ money | currency:'INR' }}</p>
+                                            <p>{{ money | currency:'GBP' }}</p>
+                                            <p>{{ money | currency:'INR':'code' }}</p>
+                                        </div>
+                                 </div>
+                      </div>
+                    </div>
+                
+                  <div *ngIf = 'user == 4'>
+                    <div class="container">
+                            <div class="box-part text-center">
+                                    <i class='fas fa-pizza-slice' style='font-size:48px;color:rgb(13, 126, 255)'></i>
+                                    <div class="title">
+                                        <h3>Slice</h3>
+                                    </div>
+                                    <div class="text">
+                                       <p>{{ sliceVar | slice: 3:15 }}</p>
+                                       <p>{{ sliceVar1 | slice: 2:5 }}</p>
+                                    </div>
+                                 </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf = 'user == 5'>
+                        <div class="container">
+                                <div class="box-part text-center">
+                                        <i class='fas fa-calendar-alt' style='font-size:48px;color:rgb(13, 126, 255)'></i>
+
+                                        <div class="title">
+                                            <h3>Date</h3>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ testDate }}</p>
+                                            <p>{{ testDate | date }}</p>
+                                            <p>{{ testDate | date:'short' }}</p>
+                                            <p>{{ testDate | date:'short' | lowercase }}</p>
+                                        </div>
+                                     </div>
+                        </div>
+                      </div>
+
+                    <div *ngIf = 'user == 6'>
+                    <div class="container">
+                            <div class="box-part text-center">
+                                    <div class="title">
+                                        <h3>Digit</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ digit | number: '3.4-5' }}</p>
+                                        <p>{{ digit1 | number: '3.4-5' }}</p>
+                                    </div>
+                                 </div>
+                    </div>
+                  </div>
+
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+</div>
+
+<div class="container">
+<h2 class="text-center my-5">Custom Pipes</h2>
+<div class="row">
+<div class="col-lg-4"></div>
+<div class="col-lg-4">
+    <h4 class="text-center text-primary mb-3">Power Boost Calculator</h4>
+    <label>Number</label>
+    <input [(ngModel)] = "power" class="form-control" type="number" ngModel><br>
+    <label>Power Factor</label>
+    <input [(ngModel)] = "factor" class="form-control mb-5" type="number" ngModel>
+    <p>Result : {{ power | exponentialStrength : factor }}</p>
+</div>
+<div class="col-lg-4"></div>
+</div>
+</div>
+
